@@ -1,0 +1,60 @@
+// src/components/PaymentForm.scss
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form h2 {
+  font-size: $font-size-large;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: $font-size-medium;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+button {
+  padding: 15px;
+  background-color: $primary-color;
+  color: white;
+  font-size: $font-size-medium;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+}

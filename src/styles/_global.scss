@@ -1,0 +1,10 @@
+// src/styles/_global.scss
+@use './variables' as *;  // Importation des variables
+
+body {
+  font-family: $font-family;  // Utilisation de la variable
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}

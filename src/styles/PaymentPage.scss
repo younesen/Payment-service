@@ -1,0 +1,412 @@
+
+$primary-color: #4361ee;
+$secondary-color: #3a0ca3;
+$success-color: #4cc9f0;
+$error-color: #f72585;
+$light-color: #f8f9fa;
+$dark-color: #212529;
+$border-color: #dee2e6;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.payment-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: $dark-color;
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    color: $secondary-color;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: lighten($dark-color, 20%);
+    font-size: 1.1rem;
+  }
+}
+
+.payment-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  overflow: hidden;
+}
+
+.payment-methods {
+  display: flex;
+  border-bottom: 1px solid $border-color;
+
+  .method-tab {
+    flex: 1;
+    padding: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    @include flex-center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: lighten($dark-color, 30%);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      color: $primary-color;
+      font-weight: 600;
+
+      &:after {
+        background: $primary-color;
+      }
+
+      .method-icon {
+        color: $primary-color;
+      }
+    }
+
+    .method-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.payment-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.payment-illustration {
+  @include flex-center;
+  flex-direction: column;
+  padding: 1rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.security-badge {
+  background: $light-color;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  @include flex-center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  .secure-icons {
+    @include flex-center;
+    gap: 0.5rem;
+
+    .lock-icon, .ssl-icon {
+      background: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      @include flex-center;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.payment-form {
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: darken($dark-color, 10%);
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+
+      &::placeholder {
+        color: lighten($dark-color, 50%);
+      }
+    }
+  }
+}
+
+.card-input, .phone-input, .amount-input {
+  position: relative;
+
+  .card-icon, .country-code, .currency {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: lighten($dark-color, 30%);
+  }
+
+  .card-icon {
+    left: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .country-code, .currency {
+    left: 1rem;
+    font-weight: 500;
+    background: $light-color;
+    padding: 0 0.5rem;
+    border-radius: 4px;
+  }
+
+  input {
+    padding-left: 3rem !important;
+  }
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.cvc-input {
+  position: relative;
+
+  .cvc-hint {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: lighten($dark-color, 40%);
+    background: white;
+    padding: 0 0.3rem;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  @include flex-center;
+  gap: 0.5rem;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba($primary-color, 0.3);
+  }
+
+  &:disabled {
+    background: lighten($primary-color, 30%);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .processing {
+    @include flex-center;
+    gap: 0.5rem;
+
+    .spinner {
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.payment-footer {
+  margin-top: 2rem;
+  text-align: center;
+
+  .accepted-cards {
+    @include flex-center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    img {
+      height: 24px;
+      width: auto;
+      filter: grayscale(30%);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+
+      &:hover {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .secure-info {
+    @include flex-center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: lighten($dark-color, 20%);
+
+    .secure-icon {
+      color: $success-color;
+    }
+  }
+}
+
+.payment-result {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  @include flex-center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+
+  &.success {
+    .result-content {
+      border-top: 4px solid $success-color;
+    }
+
+    .result-icon {
+      color: $success-color;
+    }
+  }
+
+  &.error {
+    .result-content {
+      border-top: 4px solid $error-color;
+    }
+
+    .result-icon {
+      color: $error-color;
+    }
+  }
+
+  .result-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+
+    .result-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      margin-bottom: 1rem;
+      color: $dark-color;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      color: lighten($dark-color, 20%);
+    }
+
+    .retry-btn {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background: $primary-color;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+@media (max-width: 768px) {
+  .payment-methods {
+    flex-direction: column;
+
+    .method-tab {
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 1rem;
+      gap: 1rem;
+
+      &:after {
+        width: 3px;
+        height: 100%;
+        left: 0;
+        bottom: auto;
+      }
+    }
+  }
+
+  .card-details {
+    grid-template-columns: 1fr;
+  }
+}

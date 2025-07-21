@@ -1,0 +1,7 @@
+// src/styles/_mixins.scss
+
+@mixin center-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

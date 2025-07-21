@@ -1,0 +1,7 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use './global' as *;
+@use './App' as *;
+@use './PaymentPage' as paymentPage;
+@use '../components/PaymentForm' as pf;
+@use '../components/PaymentStatus' as ps;

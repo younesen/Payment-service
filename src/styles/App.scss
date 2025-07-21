@@ -1,0 +1,14 @@
+@use './variables' as *;
+@use './mixins' as *;  // Add this line to import mixins
+
+.App {
+  text-align: center;
+  background-color: $background-color;
+}
+
+.App-header {
+  @include center-align;  // Now this will work
+  background-color: $primary-color;
+  color: white;
+  height: 100vh;
+}

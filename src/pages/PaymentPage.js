@@ -83,7 +83,7 @@ const ModernPaymentCard = () => {
               setFormData(prev => ({ ...prev, paymentMethod: 'MTC' }));
             }}
           >
-            <FaLandmark className="method-icon" />
+            <FaMobileAlt className="method-icon" />
             <span>MTC Pay</span>
           </button>
           
